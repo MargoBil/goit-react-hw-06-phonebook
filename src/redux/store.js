@@ -1,10 +1,12 @@
-import contactsReducer from './contacts/contactsReducer';
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
+
+import {contactsReducer, themeReducer} from './reducers/rootReducer';
 
 const store = configureStore({
-    reducer: {
-        contacts: contactsReducer
-    }
-})
+  reducer: {
+    contacts: contactsReducer,
+    theme: themeReducer,
+  },
+});
 
 export default store;

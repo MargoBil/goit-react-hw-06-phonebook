@@ -21,6 +21,7 @@ const mapStateToProps = state => {
   const visibleContacts = items.filter(({name}) =>
     name.toLowerCase().includes(normalizeFilter),
   );
+
   return {
     contacts: visibleContacts,
   };

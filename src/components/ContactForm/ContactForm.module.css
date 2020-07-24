@@ -1,9 +1,9 @@
 .input {
-width: 300px;
-height: 25px;
-display: block;
-margin-top: 5px;
-margin-bottom: 5px;
+  width: 300px;
+  height: 25px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .input:focus {
@@ -21,23 +21,52 @@ label {
   font-weight: 500;
 }
 
+.labelLight {
+  color: #363638;
+}
+
+.labelDark {
+  color: #f5f5f5;
+}
+
 form {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid #444444;
   padding: 10px;
 }
 
-button {
+.formLight {
+  border: 1px solid #363638;
+}
+
+.formDark {
+  border: 1px solid #f5f5f5;
+}
+
+.btnFormLight {
   margin-bottom: 5px;
   margin-top: 5px;
   border-radius: 5px 5px 5px 5px;
-  border: 1px solid rgb(177, 176, 176);
+  border: 1px solid #b9b9bb;
   background-color: transparent;
   cursor: pointer;
   outline: unset;
+  color: #363638;
 }
 
-button:focus {
+.btnFormDark {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid #f5f5f5;
+  background-color: transparent;
+  cursor: pointer;
+  outline: unset;
+  color: #f5f5f5;
+}
+
+
+
+.btnForm:focus {
   background-color: #0099ff;
 }

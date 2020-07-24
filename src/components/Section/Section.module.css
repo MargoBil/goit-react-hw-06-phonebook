@@ -5,6 +5,12 @@
   flex-wrap: wrap;
 }
 
-.name {
+.nameLight {
   text-align: left;
+  color: black;
+}
+
+.nameDark {
+  text-align: left;
+  color: whitesmoke;
 }

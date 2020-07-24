@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import contactsActions from '../../redux/contacts/contactsActions';
+import {addName} from '../../redux/actions/index';
 
 import InputMask from 'react-input-mask';
 
@@ -9,7 +9,7 @@ import s from './ContactForm.module.css';
 const INITIAL_STATE = {
   name: '',
   number: '',
-}
+};
 
 class ContactForm extends Component {
   state = {...INITIAL_STATE};
@@ -20,31 +20,53 @@ class ContactForm extends Component {
     this.setState({...INITIAL_STATE});
   };
 
-  handleChange = e => {
-    const {name, value} = e.target;
+  handleChange = ({target}) => {
+    const {name, value} = target;
     this.setState({[name]: value});
   };
 
-  render () {
+  render() {
+    const {themeColor} = this.props.theme;
     const {name, number} = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form className={s[`form${themeColor}`]} onSubmit={this.handleSubmit}>
+        <label className={s[`label${themeColor}`]}>
           Name
-          <input className={s.input} type="text" value={name} name="name" onChange={this.handleChange} />
+          <input
+            className={s.input}
+            type="text"
+            value={name}
+            name="name"
+            onChange={this.handleChange}
+          />
         </label>
-        <label>
+        <label className={s[`label${themeColor}`]}>
           Number
-          <InputMask className={s.input} mask="999-99-99" maskChar=" " value={number} name="number" onChange={this.handleChange} />
+          <InputMask
+            className={s.input}
+            mask="999-99-99"
+            maskChar=" "
+            value={number}
+            name="number"
+            onChange={this.handleChange}
+          />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={s[`btnForm${themeColor}`]} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
 }
 
-const mapDispatchToProps = {
-  onAddName: contactsActions.addName
-}
+const mapStateToProps = state => {
+  return {
+    ...state,
+  };
+};
 
-export default connect(null, mapDispatchToProps)(ContactForm);
+const mapDispatchToProps = {
+  onAddName: addName,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

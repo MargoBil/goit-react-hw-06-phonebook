@@ -1,30 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import contactsActions from '../../redux/contacts/contactsActions';
+import {deleteContact} from '../../redux/actions/index';
 
 import s from './ContactItem.module.css';
 
-const ContactItem = ({contact, number, onDeleteContact}) => {
+const ContactItem = ({contact, number, theme, onDeleteContact}) => {
   return (
-    <li className={s.item}>
+    <li className={s[`item${theme}`]}>
       <p>
         {contact}: {number}
       </p>
-      <button onClick={onDeleteContact}>Delete</button>
+      <button className={s[`btn${theme}`]} onClick={onDeleteContact}>
+        Delete
+      </button>
     </li>
   );
 };
+
 const mapStateToProps = (state, ownProps) => {
   const item = state.contacts.items.find(item => item.id === ownProps.id);
   return {
     contact: item.name,
     number: item.number,
+    theme: state.theme.themeColor,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onDeleteContact: () => dispatch(contactsActions.deleteContact(ownProps.id)),
+  onDeleteContact: () => dispatch(deleteContact(ownProps.id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);

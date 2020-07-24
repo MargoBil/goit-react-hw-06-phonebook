@@ -1,3 +1,4 @@
+  
 .box {
   margin: 10px;
 }
@@ -15,4 +16,14 @@ input:focus {
   border: unset;
   outline: 0;
   outline-offset: 0;
+}
+
+.labelLight {
+  color: black;
+
+}
+
+.labelDark {
+  color: whitesmoke;
+  
 }

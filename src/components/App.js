@@ -5,12 +5,15 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Section from './Section/Section';
 import Filter from './Filter/Filter';
+import ThemeButton from './ThemeButton/ThemeButton';
+import Wrapper from './Wrapper/Wrapper';
 
 const App = ({contacts}) => {
   const visibleFilter = contacts.items.length > 1;
   const visibleList = contacts.items.length > 0;
   return (
-    <div>
+    <Wrapper>
+      <ThemeButton />
       <Section title="Phonebook">
         <ContactForm />
         {visibleFilter && <Filter />}
@@ -20,7 +23,7 @@ const App = ({contacts}) => {
           <ContactList />
         </Section>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
